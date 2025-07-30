@@ -1,19 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 
 export default function Home() {
-  // Mock data for privacy metrics
-  const privacyScore = 63; // Out of 100
-  const companiesWithData = 42;
-  const highRiskCompanies = 12;
-  const dataBreaches = 3;
-  const recentActivity = [
-    { type: 'breach', company: 'TechCorp', date: 'July 28, 2025', risk: 'high' },
-    { type: 'policy-change', company: 'StreamFlix', date: 'July 25, 2025', risk: 'medium' },
-    { type: 'tracking', company: 'AdTech Co.', date: 'July 22, 2025', risk: 'medium' },
-    { type: 'deletion', company: 'SocialApp', date: 'July 20, 2025', risk: 'low' },
-  ];
-
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -48,21 +35,13 @@ export default function Home() {
               <div className="privacy-score-ring w-48 h-48">
                 <div className="privacy-score-inner">
                   <div className="flex flex-col items-center justify-center">
-                    <span className="text-4xl font-bold">{privacyScore}</span>
+                    <span className="text-4xl font-bold">63</span>
                     <span className="text-sm text-muted-foreground">out of 100</span>
                   </div>
                 </div>
               </div>
               <div className="mt-2 text-center">
-                <span className={`privacy-badge ${
-                  privacyScore < 50 ? 'privacy-badge-high' : 
-                  privacyScore < 75 ? 'privacy-badge-medium' : 
-                  'privacy-badge-low'
-                }`}>
-                  {privacyScore < 50 ? 'High Risk' : 
-                   privacyScore < 75 ? 'Medium Risk' : 
-                   'Low Risk'}
-                </span>
+                <span className="privacy-badge privacy-badge-medium">Medium Risk</span>
               </div>
               <p className="text-sm text-muted-foreground text-center">
                 Your digital footprint needs attention. Take action to improve your score.
@@ -75,7 +54,7 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-medium">Companies with Your Data</h3>
-                    <p className="text-3xl font-bold">{companiesWithData}</p>
+                    <p className="text-3xl font-bold">42</p>
                   </div>
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
@@ -89,7 +68,7 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-medium">High Risk Companies</h3>
-                    <p className="text-3xl font-bold text-privacy-high">{highRiskCompanies}</p>
+                    <p className="text-3xl font-bold text-privacy-high">12</p>
                   </div>
                   <div className="h-12 w-12 rounded-full bg-privacy-high/10 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-privacy-high">
@@ -104,7 +83,7 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-medium">Data Breaches</h3>
-                    <p className="text-3xl font-bold text-privacy-breach">{dataBreaches}</p>
+                    <p className="text-3xl font-bold text-privacy-breach">3</p>
                   </div>
                   <div className="h-12 w-12 rounded-full bg-privacy-breach/10 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-privacy-breach">
@@ -120,20 +99,26 @@ export default function Home() {
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
               <div className="space-y-4">
-                {recentActivity.map((activity, index) => (
-                  <div key={index} className="flex items-start space-x-4 pb-4 border-b last:border-0">
-                    <div className={`h-10 w-10 rounded-full flex items-center justify-center 
-                      ${activity.type === 'breach' ? 'bg-privacy-breach/10' : 
-                        activity.type === 'policy-change' ? 'bg-privacy-alert/10' : 
-                        activity.type === 'tracking' ? 'bg-privacy-medium/10' : 
-                        'bg-privacy-low/10'}`}>
-                      {activity.type === 'breach' && (
+                {/* Static recent activity items */}
+                <div className="flex items-start space-x-4 pb-4 border-b">
+                  <div className="h-10 w-10 rounded-full flex items-center justify-center bg-privacy-breach/10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-privacy-breach">
                           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                           <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                         </svg>
-                      )}
-                      {activity.type === 'policy-change' && (
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-medium">TechCorp</h4>
+                      <span className="privacy-badge privacy-badge-high">High Risk</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">Data breach detected</p>
+                    <p className="text-xs text-muted-foreground mt-1">July 28, 2025</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4 pb-4 border-b">
+                  <div className="h-10 w-10 rounded-full flex items-center justify-center bg-privacy-alert/10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-privacy-alert">
                           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                           <polyline points="14 2 14 8 20 8"></polyline>
@@ -141,45 +126,33 @@ export default function Home() {
                           <line x1="16" y1="17" x2="8" y2="17"></line>
                           <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
-                      )}
-                      {activity.type === 'tracking' && (
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-medium">StreamFlix</h4>
+                      <span className="privacy-badge privacy-badge-medium">Medium Risk</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">Privacy policy updated</p>
+                    <p className="text-xs text-muted-foreground mt-1">July 25, 2025</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="h-10 w-10 rounded-full flex items-center justify-center bg-privacy-medium/10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-privacy-medium">
                           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                           <circle cx="12" cy="12" r="3"></circle>
                         </svg>
-                      )}
-                      {activity.type === 'deletion' && (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-privacy-low">
-                          <polyline points="3 6 5 6 21 6"></polyline>
-                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                          <line x1="10" y1="11" x2="10" y2="17"></line>
-                          <line x1="14" y1="11" x2="14" y2="17"></line>
-                        </svg>
-                      )}
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <h4 className="font-medium">{activity.company}</h4>
-                        <span className={`privacy-badge ${
-                          activity.risk === 'high' ? 'privacy-badge-high' : 
-                          activity.risk === 'medium' ? 'privacy-badge-medium' : 
-                          'privacy-badge-low'
-                        }`}>
-                          {activity.risk === 'high' ? 'High Risk' : 
-                           activity.risk === 'medium' ? 'Medium Risk' : 
-                           'Low Risk'}
-                        </span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {activity.type === 'breach' && 'Data breach detected'}
-                        {activity.type === 'policy-change' && 'Privacy policy updated'}
-                        {activity.type === 'tracking' && 'Increased tracking activity'}
-                        {activity.type === 'deletion' && 'Data deletion request sent'}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">{activity.date}</p>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-medium">AdTech Co.</h4>
+                      <span className="privacy-badge privacy-badge-medium">Medium Risk</span>
                     </div>
+                    <p className="text-sm text-muted-foreground">Increased tracking activity</p>
+                    <p className="text-xs text-muted-foreground mt-1">July 22, 2025</p>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>

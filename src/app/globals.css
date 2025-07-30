@@ -7,7 +7,7 @@
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
   
-  /* Primary colors - blue theme for privacy */
+  /* Primary colors */
   --primary: 221.2 83.2% 53.3%;
   --primary-foreground: 210 40% 98%;
   
@@ -42,25 +42,6 @@
   
   /* Border radius */
   --radius: 0.5rem;
-  
-  /* Privacy-specific colors */
-  --privacy-high: 0 84.2% 60.2%;
-  --privacy-medium: 38 92.7% 50.6%;
-  --privacy-low: 142.1 76.2% 36.3%;
-  --privacy-secure: 160 84.2% 39.2%;
-  --privacy-breach: 354 70.2% 53.3%;
-  --privacy-alert: 38 92.7% 50.6%;
-  --privacy-info: 221.2 83.2% 53.3%;
-  
-  /* Data visualization colors */
-  --data-blue: 221.2 83.2% 53.3%;
-  --data-green: 142.1 76.2% 36.3%;
-  --data-yellow: 38 92.7% 50.6%;
-  --data-red: 0 84.2% 60.2%;
-  --data-purple: 270 76.2% 56.3%;
-  --data-teal: 180 76.2% 41.3%;
-  --data-orange: 24 94.7% 53.3%;
-  --data-gray: 215.4 16.3% 46.9%;
 }
 
 .dark {
@@ -68,7 +49,7 @@
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
   
-  /* Primary colors - blue theme for privacy */
+  /* Primary colors */
   --primary: 217.2 91.2% 59.8%;
   --primary-foreground: 222.2 47.4% 11.2%;
   
@@ -100,25 +81,6 @@
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 224.3 76.3% 48%;
-  
-  /* Privacy-specific colors */
-  --privacy-high: 0 62.8% 30.6%;
-  --privacy-medium: 38 92.7% 37.1%;
-  --privacy-low: 142.1 70.6% 45.3%;
-  --privacy-secure: 160 70.6% 39.2%;
-  --privacy-breach: 354 70.2% 45.3%;
-  --privacy-alert: 38 92.7% 37.1%;
-  --privacy-info: 217.2 91.2% 59.8%;
-  
-  /* Data visualization colors */
-  --data-blue: 217.2 91.2% 59.8%;
-  --data-green: 142.1 70.6% 45.3%;
-  --data-yellow: 38 92.7% 37.1%;
-  --data-red: 0 62.8% 30.6%;
-  --data-purple: 270 70.6% 50.3%;
-  --data-teal: 180 70.6% 45.3%;
-  --data-orange: 24 94.7% 45.3%;
-  --data-gray: 215 20.2% 65.1%;
 }
 
 @layer base {
@@ -175,187 +137,60 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Privacy score gradient */
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r;
-}
-
+/* Simple gradient text utility */
 .text-gradient-privacy {
-  @apply from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-300;
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Animation utilities */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.dark .text-gradient-privacy {
+  background: linear-gradient(to right, #60a5fa, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes slideIn {
-  from { transform: translateY(10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes slideOut {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(10px); opacity: 0; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes loading-bar {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(400%); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-.animate-fade-out {
-  animation: fadeOut 0.5s ease-in-out forwards;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.5s ease-out forwards;
-}
-
-.animate-slide-out {
-  animation: slideOut 0.5s ease-out forwards;
-}
-
-.animate-delay-100 {
-  animation-delay: 0.1s;
-}
-
-.animate-delay-200 {
-  animation-delay: 0.2s;
-}
-
-.animate-delay-300 {
-  animation-delay: 0.3s;
-}
-
-.animate-delay-400 {
-  animation-delay: 0.4s;
-}
-
-.animate-delay-500 {
-  animation-delay: 0.5s;
-}
-
-.animate-pulse-slow {
-  animation: pulse 3s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spin 8s linear infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite linear;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-  background-size: 200% 100%;
-}
-
-.animate-loading-bar {
-  animation: loading-bar 1.5s ease-in-out infinite;
-}
-
-/* Privacy-specific utility classes */
-.privacy-score-ring {
-  @apply relative rounded-full flex items-center justify-center;
-  background: conic-gradient(
-    hsl(var(--privacy-low)) 0%,
-    hsl(var(--privacy-medium)) 50%,
-    hsl(var(--privacy-high)) 100%
-  );
-}
-
-.privacy-score-inner {
-  @apply absolute rounded-full bg-background flex items-center justify-center;
-  width: 85%;
-  height: 85%;
-}
-
+/* Basic card styling */
 .privacy-card {
-  @apply bg-card rounded-lg shadow-privacy border border-border p-4 transition-all duration-200;
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .privacy-card:hover {
-  @apply shadow-card-hover transform scale-[1.01];
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Simple badge styling */
 .privacy-badge {
-  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .privacy-badge-high {
-  @apply bg-privacy-high/10 text-privacy-high;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgb(239, 68, 68);
 }
 
 .privacy-badge-medium {
-  @apply bg-privacy-medium/10 text-privacy-medium;
+  background-color: rgba(245, 158, 11, 0.1);
+  color: rgb(245, 158, 11);
 }
 
 .privacy-badge-low {
-  @apply bg-privacy-low/10 text-privacy-low;
-}
-
-.privacy-badge-secure {
-  @apply bg-privacy-secure/10 text-privacy-secure;
-}
-
-.privacy-badge-breach {
-  @apply bg-privacy-breach/10 text-privacy-breach;
-}
-
-.privacy-badge-alert {
-  @apply bg-privacy-alert/10 text-privacy-alert;
-}
-
-.privacy-badge-info {
-  @apply bg-privacy-info/10 text-privacy-info;
-}
-
-/* Responsive utilities */
-@media (max-width: 640px) {
-  .privacy-hide-mobile {
-    display: none;
-  }
-  
-  .privacy-card {
-    @apply p-3;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .privacy-hide-tablet {
-    display: none;
-  }
-}
-
-@media (min-width: 1025px) {
-  .privacy-hide-desktop {
-    display: none;
-  }
+  background-color: rgba(34, 197, 94, 0.1);
+  color: rgb(34, 197, 94);
 }
 
 /* Accessibility utilities */
@@ -372,5 +207,6 @@ body {
 }
 
 .focus-visible:focus-visible {
-  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring));
 }
